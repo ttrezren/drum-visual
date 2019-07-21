@@ -1,37 +1,29 @@
 <template>
   <Layout>
-    
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <Graph />
-
-    <p class="home-links">
-      <a href="https://gridsome.org/docs" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p>
-
+    <ul>
+      <li v-for="edge in $page.graphs.edges" :key="edge.node.id">
+        <g-link :to="edge.node.path"> {{ edge.node.name }}</g-link>
+      </li>    
+    </ul>
   </Layout>
 </template>
 
-<script>
-import Graph from '../components/Graph.vue';
-import * as d3 from 'd3';
-
-export default {
-  metaInfo: {
-    title: 'Viz in D3'
-  },
-  components: {
-    Graph,
-  },
-  data() {
-    return {
-    };
-  },
-};
-</script>
+<page-query>
+query Graphs {
+  graphs: allGraph (sortBy: "name", order: ASC) {
+    edges {
+      node { 
+        id
+        name
+        path
+      }
+    }
+  }
+}
+</page-query>
 
 <style>
-.home-links a {
-  margin-right: 1rem;
-}
+  body {
+    margin: 20px;
+  }
 </style>

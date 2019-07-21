@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>Dunun parts</h1>
+    <Layout>
+        <h1>Dunun parts for {{ $page.graph.name }}</h1>
         <svg id="viz"
             :height='height'
             :width='width'
@@ -21,45 +21,58 @@
                 </g>
             </g>
         </svg>
-    </div>
+    </Layout>
 </template>
+
+<page-query>
+    query Graph($path: String!) {
+        graph: graph(path: $path) {
+            name
+            steps
+            parts {
+                name
+                data
+            }
+        }
+    }
+</page-query>
 
 <script>
 import * as d3 from 'd3'
-import dununba from './dununba'
-import gidanba from './gidanba'
-import sofa from './sofa'
-let steps = 16
+
 export default {
-    name: "Graph",
     data() {
         return {
+            parts: null,
+            name: null,
+            steps: null,
+            scale: null,
             height: 300,
             width: 600,
             xSize: 560,
-            ySize: 280,
-            parts: sofa,
-            scale: {
-                x: d3.scaleLinear().domain([0,steps-1]).range([20,580]),
-                y: d3.scaleLinear().domain([0,2]).range([10,290])
-            }
-
+            ySize: 280
         }
     },
     created() {
-        },
+        this.parts = this.$page.graph.parts
+        this.name = this.$page.graph.name
+        this.steps = this.$page.graph.steps
+        this.scale = {
+            x: d3.scaleLinear().domain([0,this.steps-1]).range([20,580]),
+            y: d3.scaleLinear().domain([0,2]).range([10,290])
+        }
+    },
     mounted() {
-            let axis = d3.axisBottom(this.scale.x).tickFormat("").tickSize(20).ticks(12)
-            d3.select("svg").insert("g",":first-child")
-                .call(axis)
-        // this.getData();
+    let axis = d3.axisBottom(this.scale.x).tickFormat("").tickSize(20).ticks(this.steps)
+    d3.select("svg").insert("g",":first-child")
+        .call(axis)
     },
     methods: {
         sizeMap: d3.scaleOrdinal([0,5,10,5])
             .domain([0,1,2,3]),
         strokeMap: d3.scaleOrdinal([0,0,2,2])
             .domain([0,1,2,3]),
-        fillMap: d3.scaleOrdinal([null,"#EEE","#EEE","#888"])
+        fillMap: d3.scaleOrdinal([null,"#000","#EEE","#EEE"])
             .domain([0,1,2,3]),
         formatData(){
             var result = [];
@@ -84,13 +97,6 @@ export default {
             }
             return result
         },
-        getData() {
-            var that = this;
-            d3.json('data.json', function(data){
-                that.componentData = data;
-                console.log(that.componentData);
-            });
-        },
     },
     computed: {
         output() {
@@ -103,5 +109,8 @@ export default {
 <style>
 #viz {
     background-color: #ccc;
+}
+body {
+    margin: 20px
 }
 </style>
