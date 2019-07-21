@@ -106,11 +106,3 @@ export default {
 }
 </script>
 
-<style>
-#viz {
-    background-color: #ccc;
-}
-body {
-    margin: 20px
-}
-</style>
