@@ -5,11 +5,14 @@
             :height='height'
             :width='width'
         >
-            <g v-for="g in output">
+            <g v-for="a in output">
             <!--"output" is a computed function-->
-                <g>
+                <g class="line">
+                    <text class="label" x="0" :y="a[1][0].y + 5">
+                        {{ a[0] }}
+                    </text>
                     <circle
-                        v-for="c in g"
+                        v-for="c in a[1]"
                         stroke="black"
                         :cx="c.x"
                         :cy="c.y"
@@ -58,13 +61,14 @@ export default {
         this.name = this.$page.graph.name
         this.steps = this.$page.graph.steps
         this.scale = {
-            x: d3.scaleLinear().domain([0,this.steps-1]).range([20,580]),
+            x: d3.scaleLinear().domain([0,this.steps-1]).range([30,600]),
             y: d3.scaleLinear().domain([0,2]).range([10,290])
         }
     },
     mounted() {
     let axis = d3.axisBottom(this.scale.x).tickFormat("").tickSize(20).ticks(this.steps)
     d3.select("svg").insert("g",":first-child")
+        .attr("id", "grid")
         .call(axis)
     },
     methods: {
@@ -76,11 +80,11 @@ export default {
             .domain([0,1,2,3]),
         formatData(){
             var result = [];
+            let lines = Object.keys(this.parts).length
             for (var n = 0; n < this.parts.length; n++){
-                let count = this.parts[n].data.length
-                let lines = Object.keys(this.parts).length
+                var key = this.parts[n].name[0];
                 let offset = {
-                        x: 10,
+                        x: 20,
                         y: (this.height-this.ySize)/2 + this.ySize/(lines*2) + (this.ySize/lines * n)
                     };
                 const output = this.parts[n].data.map((d,i) => {
@@ -93,7 +97,7 @@ export default {
                         stroke: this.strokeMap(d)
                     };
                 })
-                result.push(output);
+                result.push([key,output]);
             }
             return result
         },
@@ -106,3 +110,24 @@ export default {
 }
 </script>
 
+<style>
+#viz {
+    font-size: 14px;
+    overflow: visible;
+   /* outline: 1px solid red; */
+}
+
+g#grid line,  g#grid path{
+    stroke: bisque;
+}
+
+g text.label {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    fill: bisque;
+}
+
+g.line {
+    margin-left: 18px;
+}
+</style>

@@ -1,14 +1,22 @@
-# Default starter for Gridsome
+# Riddimist
 
-This is the project you get when you run `gridsome create new-project`.
+Dunun are the original tom-toms.
 
-### 1. Install Gridsome CLI tool if you don't have
+## Consisting of Javascript, Markup and APIs
+
+Built with the jamstack and deployed on netlify.
+Graphs by d3js. Framework by gridsome. Content by Tim Renner.
+
+## Make your own
+
+*install gridsome if you don't have it*
 
 `npm install --global @gridsome/cli`
 
-### 2. Create a Gridsome project
+`git clone git@github.com:ttrezren/drum-visual.git && cd drum-visual`
 
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+`yarn install`
+
+`gridsome develop`
+
+Happy coding!
