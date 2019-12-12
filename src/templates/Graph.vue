@@ -118,13 +118,13 @@ export default {
 }
 
 g#grid line,  g#grid path{
-    stroke: bisque;
+    stroke: lightblue;
 }
 
 g text.label {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
-    fill: bisque;
+    fill: lightblue;
 }
 
 g.line {
