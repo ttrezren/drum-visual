@@ -11,6 +11,7 @@
     "@gridsome/transformer-json": "^0.2.1",
     "@gridsome/transformer-remark": "^0.3.2",
     "d3": "4",
-    "gridsome": "^0.7.11"
+    "gridsome": "^0.7.11",
+    "yarn": "^1.21.1"
   }
 }
