@@ -12,5 +12,8 @@
     "@gridsome/transformer-remark": "^0.4.0",
     "d3": "4",
     "gridsome": "^0.7.0"
+  },
+  "resolutions": {
+    "minimist": "^1.2.3"
   }
 }
