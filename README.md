@@ -50,8 +50,11 @@ The project uses a simple scheme to create a diagram for drum parts based on the
 ```
 where:
 *name* becomes the page title
+
 *steps* defines the grid, commonly 12 or 16
+
 *parts* is an array of part objects, each of which has a *name* and *data* key
+
 *data* values cause symbols to be printed in the grid 0 = nothing; 1 = small filled; 2 = large hollow; 3 = large filled
 
 Note: the build script creates a route and graph for every .json file in the *content* folder.
@@ -62,4 +65,4 @@ Note: the build script creates a route and graph for every .json file in the *co
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/03d5a170-4ef9-4916-9679-a73289cde700/deploy-status)](https://app.netlify.com/sites/jolly-wilson-1e0ce9/deploys)
 
-[Riddimist](https://www.samizdatpixelpress.net)
+[Riddimist](https://www.digitizdat.com)
