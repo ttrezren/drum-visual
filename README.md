@@ -65,4 +65,4 @@ Note: the build script creates a route and graph for every .json file in the *co
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/03d5a170-4ef9-4916-9679-a73289cde700/deploy-status)](https://app.netlify.com/sites/jolly-wilson-1e0ce9/deploys)
 
-[Riddimist](https://www.digitizdat.com)
+[Riddimist](https://jolly-wilson-1e0ce9.netlify.app/)
