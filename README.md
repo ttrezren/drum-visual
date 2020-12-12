@@ -26,17 +26,17 @@ The project uses a simple scheme to create a diagram for drum parts based on the
 ## 3. drum vizualization
 
 1. think up some beats
-2. create a new json file in ./content
+1. create a new json file in ./content
 
 ```json
 {
-    "name": "Name", //becomes title
-    "steps": 12, // usually 12 or 16, forms grid
-    "parts": [ // optimized for three parts
+    "name": "Name",
+    "steps": 12,
+    "parts": [
         {
-            "name": "Kenkeni", // first letter becomes label
-            "data": [0,1,2,0,2,2,0,1,2,0,2,2] // must match number of steps
-        }, // 0 = nothing; 1 = small filled; 2 = large hollow; 3 = large filled
+            "name": "Kenkeni",
+            "data": [0,1,2,0,2,2,0,1,2,0,2,2]
+        },
         {
             "name": "Sangban",
             "data": [3,0,1,1,0,1,1,0,2,1,0,1]
@@ -48,8 +48,13 @@ The project uses a simple scheme to create a diagram for drum parts based on the
     ]
 }
 ```
+where:
+*name* becomes the page title
+*steps* defines the grid, commonly 12 or 16
+*parts* is an array of part objects, each of which has a *name* and *data* key
+*data* values cause symbols to be printed in the grid 0 = nothing; 1 = small filled; 2 = large hollow; 3 = large filled
 
-Build script creates a route and graph for every .json file in the *content* folder.
+Note: the build script creates a route and graph for every .json file in the *content* folder.
 
 ### deploy to netlify by pushing to github
 
