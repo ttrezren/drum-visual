@@ -39,7 +39,7 @@
         </g>
       </g>
       <!-- <PrintRow width="width" height = "height" data="[0,1,1,0,0,1,1,0]" step="50" :verticalOffset="height-20" /> -->
-      <g id="legend">
+      <!-- <g id="legend">
         <rect height="100%" width="100%" padding="10px" opacity="0">
           <text class="legendTitle" x="0" :y="height + 5">Legend</text>
 
@@ -79,7 +79,7 @@
             fill="#EEE"
           ></circle>
         </rect>
-      </g>
+      </g> -->
     </svg>
   </Layout>
 </template>
